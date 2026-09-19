@@ -4,7 +4,7 @@
    ============================================================ */
 const CONFIG = {
 
-  nombre: "Ana",
+  nombre: "Anita",
   fraseHero: "Hoy el mundo tiene un motivo más para sonreír, el sabe que tienes cualidades tan propias, que por eso no va a permitir que lo más bonito para ti, se desvanezca.",
 
   razones: [
