@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz cumpleaños</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,900;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Sekua&family=Special+Gothic:wght@400..700&display=swap" rel="stylesheet">
+<!-- ============================================================
+     CONTENIDO
+     Todo el texto visible se genera desde CONFIG (al final del
+     archivo, dentro de <script>). Para editar nombre, razones,
+     carta, recuerdos, canción, deseos o el mensaje final, edita
+     solo ese objeto: el HTML de abajo no necesita cambios.
+     ============================================================ -->
+
+  <div class="hero">
+    <div class="petals" id="petals"></div>
+    <p class="hero-eyebrow">Hoy es tu día</p>
+    <h1>Feliz cumpleaños,<br><span class="nombre" id="hero-nombre"></span></h1>
+    <p class="frase" id="hero-frase"></p>
+    <p class="scroll-hint">↓ toca una opción para descubrirla ↓</p>
+  </div>
+  
+  <div class="nav-wrap">
+    <div class="wrap" style="padding-bottom:0;">
+      <div class="nav" role="tablist" id="nav" aria-label="Módulos de la dedicatoria">
+        <button role="tab" data-panel="razones" aria-selected="false">Razones</button>
+        <button role="tab" data-panel="carta" aria-selected="false">Carta</button>
+        <button role="tab" data-panel="recuerdos" aria-selected="false">Recuerdos</button>
+        <button role="tab" data-panel="cancion" aria-selected="false">Nuestra canción</button>
+        <button role="tab" data-panel="deseos" aria-selected="false">Deseos</button>
+        <button role="tab" data-panel="paraTi" aria-selected="false">Para ti</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="wrap">
+    <div class="panels">
+  
+      <div class="empty-state" id="empty-state">
+        <p>Elige una opción arriba para empezar.</p>
+      </div>
+  
+      <section class="panel" data-panel="razones" role="tabpanel">
+        <h2 class="panel-title">Algunas razones</h2>
+        <p class="panel-sub">Nada exhaustivo. Solo lo primero que se me ocurre.</p>
+        <ul class="razones-list" id="lista-razones"></ul>
+        <p class="panel-sub">Y como te dije, habría un libro, tu biografía en menos de un tiempo.</p>
+      </section>
+  
+      <section class="panel" data-panel="carta" role="tabpanel">
+        <h2 class="panel-title">Una carta para ti</h2>
+        <p class="panel-sub">Lo que no siempre digo en voz alta.</p>
+        <div class="carta" id="carta"></div>
+      </section>
+  
+      <section class="panel" data-panel="recuerdos" role="tabpanel">
+        <h2 class="panel-title">Lo que recuerdo</h2>
+        <p class="panel-sub">Algunos momentos, en orden.</p>
+        <div class="timeline" id="timeline"></div>
+      </section>
+  
+      <section class="panel" data-panel="cancion" role="tabpanel">
+        <h2 class="panel-title">Nuestra canción</h2>
+        <p class="panel-sub">Por si la quieres poner hoy.</p>
+        <div class="cancion-card">
+          <svg class="wave" width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="14" width="4" height="12" rx="2"/>
+            <rect x="10" y="6" width="4" height="28" rx="2"/>
+            <rect x="18" y="0" width="4" height="40" rx="2"/>
+            <rect x="26" y="10" width="4" height="20" rx="2"/>
+            <rect x="34" y="16" width="4" height="8" rx="2"/>
+          </svg>
+          <div>
+            <p class="cancion-titulo" id="cancion-titulo"></p>
+            <p class="cancion-artista" id="cancion-artista"></p>
+            <p class="cancion-nota" id="cancion-nota"></p>
+          </div>
+        </div>
+      </section>
+  
+      <section class="panel" data-panel="deseos" role="tabpanel">
+        <h2 class="panel-title">Pide un deseo</h2>
+        <p class="panel-sub">Apaga cada velita tocandola y descubre cada uno.</p>
+        <div class="velas" id="velas"></div>
+        <ul class="deseos-lista" id="deseos-lista"></ul>
+        <div class="final-msg" id="final-msg"></div>
+      </section>
+  
+      <section class="panel" data-panel="paraTi" role="tabpanel">
+        <div class="cierre">
+          <h2 class="panel-title" style="text-align:center;">Para ti</h2>
+          <p class="mensaje" id="cierre-mensaje"></p>
+          <p class="firma" id="cierre-firma"></p>
+        </div>
+      </section>
+  
+    </div>
+  </div>
+</body>
+</html>
+
+  
