@@ -1,0 +1,223 @@
+
+  /* ============================================================
+     TOKENS DE COLOR — cálidos y suaves.
+     ============================================================ */
+  :root{
+    --bg: #FBF2E7;
+    --bg-card: #F4E3D2;
+    --bg-card-2: #EFDAC6;
+    --text: #46312A;
+    --text-soft: #8A6E5D;
+    --rose: #C97B84;
+    --rose-soft: #E3AEB2;
+    --gold: #B9823F;
+    --line: rgba(74,54,42,0.16);
+    --shadow: rgba(74,54,42,0.10);
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #2B1E1A;
+      --bg-card: #3A2A22;
+      --bg-card-2: #46332A;
+      --text: #F3E3D6;
+      --text-soft: #D8B79E;
+      --rose: #E39AA0;
+      --rose-soft: #C98A8F;
+      --gold: #D9A45E;
+      --line: rgba(243,227,214,0.16);
+      --shadow: rgba(0,0,0,0.30);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #2B1E1A;
+    --bg-card: #3A2A22;
+    --bg-card-2: #46332A;
+    --text: #F3E3D6;
+    --text-soft: #D8B79E;
+    --rose: #E39AA0;
+    --rose-soft: #C98A8F;
+    --gold: #D9A45E;
+    --line: rgba(243,227,214,0.16);
+    --shadow: rgba(0,0,0,0.30);
+  }
+
+  *{ box-sizing: border-box; }
+
+  html, body{
+    margin:0;
+    padding:0;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  body{
+    /*font-family: 'Lora', Georgia, 'Times New Roman', serif;*/
+    font-family: 'Fraunces', Georgia, 'Century Gothic', serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap{
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px 96px;
+  }
+
+  h1, h2, .display{
+    font-family: 'Century Gothic', sans-serif, 'Lora', Georgia ;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position: relative;
+    min-height: 72vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
+    overflow: hidden;
+  }
+
+  .petals{ position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+  .petal{
+    position: absolute; top: -40px; width: 14px; height: 18px;
+    background: var(--rose-soft); border-radius: 60% 0 60% 0;
+    opacity: 0.55; animation: fall linear infinite;
+  }
+  @keyframes fall{ to{ transform: translateY(110vh) rotate(200deg); } }
+  @media (prefers-reduced-motion: reduce){ .petal{ animation: none; display:none; } }
+
+  .hero-eyebrow{ position: relative; z-index: 1; color: var(--text-soft); font-style: italic; font-size: 1.05rem; margin-bottom: 8px; }
+  .hero h1{ position: relative; z-index: 1; font-size: clamp(2.2rem, 7vw, 3.4rem); margin: 0 0 20px; max-width: 12ch; }
+  .hero h1 .nombre{ color: var(--rose); font-style: italic; font-weight: 900; }
+  .hero p.frase{ position: relative; z-index: 1; max-width: 34ch; color: var(--text-soft); font-size: 1.1rem; margin: 0; }
+  .hero .scroll-hint{ position: relative; z-index: 1; margin-top: 36px; font-size: 0.85rem; color: var(--text-soft); opacity: 0.8; }
+
+  /* ---------- NAV DE MÓDULOS ---------- */
+  .nav-wrap{
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    padding: 18px 0 14px;
+    z-index: 5;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav{
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 2px;
+  }
+  .nav::-webkit-scrollbar{ display: none; }
+  .nav button{
+    flex: none;
+    font-family: 'Fraunces', serif;
+    font-size: 0.98rem;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--text-soft);
+    padding: 9px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    white-space: nowrap;
+  }
+  .nav button:hover{ border-color: var(--rose-soft); color: var(--text); }
+  .nav button[aria-selected="true"]{
+    background: var(--rose);
+    border-color: var(--rose);
+    color: #FFF8F1;
+  }
+  :root[data-theme="dark"] .nav button[aria-selected="true"],
+  @media (prefers-color-scheme: dark){ .nav button[aria-selected="true"]{ color: #2B1E1A; } }
+
+  /* ---------- PANELES ---------- */
+  .panels{ padding-top: 44px; min-height: 50vh; }
+  .panel{
+    display: none;
+    animation: panelIn 0.5s ease;
+  }
+  .panel.active{ display: block; }
+  @keyframes panelIn{
+    from{ opacity: 0; transform: translateY(10px); }
+    to{ opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce){ .panel{ animation: none; } }
+
+  .empty-state{
+    text-align: center;
+    padding: 40px 0 60px;
+    color: var(--text-soft);
+    font-style: italic;
+    font-size: 1.05rem;
+  }
+
+  .panel-title{ font-size: 1.7rem; margin: 0 0 8px; }
+  .panel-sub{ color: var(--text-soft); margin: 0 0 32px; font-size: 1rem; }
+
+  /* ---------- RAZONES ---------- */
+  .razones-list{ list-style: none; margin: 0; padding: 0; }
+  .razones-list li{ position: relative; padding: 18px 0 18px 28px; border-top: 1px solid var(--line); font-size: 1.08rem; }
+  .razones-list li:first-child{ border-top: none; }
+  .razones-list li::before{ content: "❦"; position: absolute; left: 0; top: 18px; color: var(--gold); font-size: 0.95rem; }
+
+  /* ---------- CARTA ---------- */
+  .carta{ background: var(--bg-card); border-radius: 4px; padding: 40px 32px; box-shadow: 0 18px 40px -24px var(--shadow); }
+  .carta p{ margin: 0 0 22px; font-size: 1.08rem; }
+  .carta p:last-child{ margin-bottom: 0; }
+  .carta p:first-of-type::first-letter{
+    font-family: 'Century Gothic', serif; font-size: 2.6rem; font-weight: 600; color: var(--rose);
+    float: left; line-height: 1; margin: 4px 8px 0 0;
+  }
+
+  /* ---------- RECUERDOS ---------- */
+  .timeline{ position: relative; margin-left: 8px; padding-left: 28px; border-left: 2px solid var(--line); }
+  .timeline-item{ position: relative; padding-bottom: 34px; }
+  .timeline-item:last-child{ padding-bottom: 0; }
+  .timeline-item::before{ content: ""; position: absolute; left: -34px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--rose); }
+  .timeline-year{ font-family: 'Fraunces', serif; font-style: italic; color: var(--gold); font-size: 0.95rem; display: block; margin-bottom: 4px; }
+
+  /* ---------- CANCIÓN ---------- */
+  .cancion-card{ display: flex; gap: 20px; align-items: center; background: var(--bg-card-2); border-radius: 4px; padding: 28px; }
+  .wave rect{ fill: var(--rose); }
+  .cancion-titulo{ font-family: 'Fraunces', serif; font-size: 1.3rem; margin: 0 0 2px; }
+  .cancion-artista{ color: var(--text-soft); font-size: 0.95rem; margin: 0 0 10px; }
+  .cancion-nota{ font-style: italic; color: var(--text-soft); font-size: 0.98rem; margin: 0; }
+
+  /* ---------- VELITAS ---------- */
+  .velas{ display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-bottom: 12px; }
+  .vela{ background: none; border: none; cursor: pointer; padding: 8px; display: flex; flex-direction: column; align-items: center; -webkit-tap-highlight-color: transparent; }
+  .vela svg{ width: 34px; height: 64px; }
+  .flama{ transform-origin: center bottom; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker{ from{ transform: scaleY(1) translateX(0); } to{ transform: scaleY(1.08) translateX(0.6px); } }
+  .vela.apagada .flama{ opacity: 0; animation: none; }
+  .vela.apagada .humo{ opacity: 1; }
+  .humo{ opacity: 0; transition: opacity 0.4s ease; }
+  .deseos-lista{ list-style: none; padding: 0; margin: 8px 0 0; min-height: 32px; }
+  .deseos-lista li{ opacity: 0; transform: translateY(6px); transition: opacity 0.5s ease, transform 0.5s ease; padding: 10px 0; border-top: 1px solid var(--line); font-size: 1.02rem; }
+  .deseos-lista li:first-child{ border-top: none; }
+  .deseos-lista li.mostrado{ opacity: 1; transform: translateY(0); }
+  .final-msg{
+    margin-top: 0; padding: 22px 24px; border-radius: 4px; background: var(--bg-card); text-align: center;
+    font-family: 'Fraunces', serif; font-style: italic; font-size: 1.15rem; color: var(--rose);
+    opacity: 0; max-height: 0; overflow: hidden; transition: opacity 0.6s ease, max-height 0.6s ease, margin 0.6s ease;
+  }
+  .final-msg.visible{ opacity: 1; max-height: 200px; margin-top: 28px; }
+
+  /* ---------- PARA TI (cierre) ---------- */
+  .cierre{ text-align: center; padding: 12px 0 24px; }
+  .cierre p.mensaje{ font-size: 1.15rem; max-width: 40ch; margin: 0 auto 28px; }
+  .firma{ font-family: 'Fraunces', serif; font-style: italic; font-size: 1.3rem; color: var(--rose); }
+
+  @media (max-width: 480px){
+    .carta{ padding: 30px 22px; }
+    .cancion-card{ flex-direction: column; align-items: flex-start; }
+    .nav button{ padding: 8px 14px; font-size: 0.92rem; }
+  }
